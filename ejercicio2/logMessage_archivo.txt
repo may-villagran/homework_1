@@ -1,0 +1,7 @@
+[SECURITY]: acceso autorizado, para el usuario: usuario_de_prueba
+[DEBUG]: Leyendo el archivo de configuración
+[INFO]: El archivo "texto.txt" fue creado
+[WARNING]: Intento de cambiar el tipo del archivo 'documento.txt' a 'documento.pdf' no es compatible
+[CRITICAL]: Error de lectura en el disco, acceso a datos imposible.
+[ERROR]:  Error al abrir el archivo para lectura, en el archivo: "datos.csv", línea: 240
+[ERROR]: Runtime_error: error desconocido
