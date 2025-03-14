@@ -1,0 +1,12 @@
+# Ignorar todo
+*
+
+# Incluir archivos .h y .cpp en todas las carpetas
+!*.h
+!*.cpp
+
+#Se incluyen las carpetas en específico
+!ejercicio1/
+!ejercicio2/
+!ejercicio3/
+!ejercicio4/
