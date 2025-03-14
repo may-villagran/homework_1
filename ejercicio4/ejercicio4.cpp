@@ -6,17 +6,57 @@ bool coincidencia_texto(const char* str1, const char* str2) {
     return coincidencia_texto(++str1, ++str2);
 }
 
-int main() {
+bool coincidencia_texto_str(const string& str1, const string& str2, int pos = 0)
+{
+    if (pos == static_cast<int>(str1.size()) && pos == static_cast<int>(str2.size())) return true;
+    else if ((str1.size() != str2.size()) || str1[pos] == str2[pos]) return false;
+    return  coincidencia_texto_str(str1, str2, ++pos);
+}
+
+
+void impresion_tiempos_resultados(){
     auto tiempo_inicial = chrono::high_resolution_clock::now();
-    bool res = coincidencia_texto("abcdefghi", "abcdefghj");
+    bool res1 = coincidencia_texto_str("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec");
     auto tiempo_final = chrono::high_resolution_clock::now();
-    auto tiempo_ejecucion = chrono::duration_cast<chrono::nanoseconds>(tiempo_final - tiempo_inicial);
+    auto tiempo_ejecucion_str = chrono::duration_cast<chrono::nanoseconds>(tiempo_final - tiempo_inicial);
 
     tiempo_inicial = chrono::high_resolution_clock::now();
-    constexpr bool res2 = coincidencia_texto_compilacion("abcdefghi", "abcdefghj");
+    res1 = coincidencia_texto("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec");
+    tiempo_final = chrono::high_resolution_clock::now();
+    auto tiempo_ejecucion_char_ptr = chrono::duration_cast<chrono::nanoseconds>(tiempo_final - tiempo_inicial);
+
+    tiempo_inicial = chrono::high_resolution_clock::now();
+    constexpr bool res2 = coincidencia_texto_compilacion("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec");
     tiempo_final = chrono::high_resolution_clock::now();
     auto tiempo_compilacion = chrono::duration_cast<chrono::nanoseconds>(tiempo_final - tiempo_inicial);
 
-    cout << "Tiempo ejecucion: " << tiempo_ejecucion.count() << " nanosegundos" << endl;
-    cout << "Tiempo compilacion: " << tiempo_compilacion.count() << " nanosegundos" << endl;
+
+    cout<<"Tiempos de las funciones:"<<endl;
+    cout << "Tiempo ejecucion con string: " << tiempo_ejecucion_str.count() << " nanosegundos" << endl;
+    cout << "Tiempo ejecucion con puntero a char: " << tiempo_ejecucion_char_ptr.count() << " nanosegundos" << endl;
+    cout << "Tiempo compilacion con puntero a char: " << tiempo_compilacion.count() << " nanosegundos" << endl;
+
+    cout<<"Verificacion de funcionamiento:"<<endl;
+    cout << "Resultado con char* en ejecucion: " << (res1 ? "Iguales" : "Diferentes") << endl;
+    cout << "Resultado con char* en tiempo de compilacion: " << (res2 ? "Iguales" : "Diferentes") << endl;
+}
+
+int main() {
+    impresion_tiempos_resultados();
+
+
+
+
+
+
+
+    /*
+    a) Elección del tipo de varible:
+
+    
+    
+    
+    */
+
+    return 0;
 }
