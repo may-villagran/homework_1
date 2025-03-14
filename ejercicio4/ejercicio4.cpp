@@ -43,20 +43,15 @@ void impresion_tiempos_resultados(){
 
 int main() {
     impresion_tiempos_resultados();
-
-
-
-
-
-
-
     /*
     a) Elección del tipo de varible:
-
+    Se seleciono char * debido que es una varible primitiva que usa memoria estática, por lo que al trabajar con este tipo de datos solo debo 
+    acceder al espacio de memoria. Mientras que el string es un objeto que trabaja con memoria dinámica, por lo que cuando se crea un string
+    el compilador debe realizar la gestion de asignacion y liberacion de memoria    
     
-    
-    
+    c) diferencia entre los tiempos:
+    Cuando usamos constexpr la compración se realiza en tiempos de compilación, por lo que cuando se ejecuta el programa
+    esta comparativa ya está hecha, usandose solo los datos precomputados en la funcion de test. 
     */
-
     return 0;
 }

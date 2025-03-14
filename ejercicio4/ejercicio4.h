@@ -13,5 +13,5 @@ constexpr bool coincidencia_texto_compilacion(const char* str1, const char* str2
 
 bool coincidencia_texto(const char* str1, const char* str2);
 bool coincidencia_texto_str(const string& str1, const string& str2, int pos);
-
+void impresion_tiempos_resultados();
 #endif 
