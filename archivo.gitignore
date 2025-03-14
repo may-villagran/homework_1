@@ -1,12 +1,9 @@
-# Ignorar todo
+# Ignorar todo por defecto
 *
 
-# Incluir archivos .h y .cpp en todas las carpetas
-!*.h
-!*.cpp
+# Permitir archivos .h y .cpp en cualquier parte del repositorio
+!**/*.h
+!**/*.cpp
 
-#Se incluyen las carpetas en específico
-!ejercicio1/
-!ejercicio2/
-!ejercicio3/
-!ejercicio4/
+# Permitir que Git rastree las carpetas que contienen estos archivos
+!*/
