@@ -98,7 +98,7 @@ bool insert(shared_ptr<List_t>list, int pos, int value){
     if(!list) return false;
     
     if(pos == 0) return push_front(list, value);
-    if(pos>list->size-1) return push_back(list, value); 
+    if(pos>static_cast<int>(list->size-1)) return push_back(list, value); 
     
     shared_ptr<Node_t> nuevo_nodo = create_nodo(value);
     if(!nuevo_nodo) return false;
@@ -119,7 +119,7 @@ void erase(shared_ptr<List_t>list, int pos){
         delete_head(list); 
         return;
     }
-    if(pos>=list->size-1){
+    if(pos>=static_cast<int>(list->size-1)){
         delete_tail(list); 
         return;
     }
@@ -141,6 +141,45 @@ void print_list(shared_ptr<List_t>list){
 
 
 int main(){
+    shared_ptr<Node_t> nodo = create_nodo(4);
+    if(!nodo) return 1;
+
+    cout<<"Test creacion nodo: \n Dirección en memoria: "<<nodo<<" \n Valor asignado:"<<nodo->value<<endl;
+    shared_ptr<List_t> list = create_list();
+    if(!list) return 1;
+
+    bool flag = push_back(list, 1);
+    cout<<"Test push_back, valor 1. Estado: "<<(flag ? "Agregado" : "No se pudo agregar el valor a la lista")<<endl;
+    cout<<"Estado de la lista actual:"<<endl;
+    print_list(list);
+
+    flag = push_front(list, 0);
+    cout<<"Test push_front, valor 0. Estado:"<<(flag ? "Agregado" : "No se pudo agregar el valor a la lista")<<endl;
+    cout<<"Estado de la lista actual:"<<endl;
+    print_list(list);
+
+    flag = insert(list, 1, 23);
+    cout<<"Test insert en la pos 1, valor 23. Estado:"<<(flag ? "Agregado" : "No se pudo agregar el valor a la lista")<<endl;
+    cout<<"Estado de la lista actual:"<<endl;
+    print_list(list);
+
+    flag = insert(list, 40, 897);
+    cout<<"Test insert en la pos 42,  valor 897. Estado:"<<(flag ? "Agregado" : "No se pudo agregar el valor a la lista")<<endl;
+    cout<<"Estado de la lista actual:"<<endl;
+    print_list(list);
+
+
+
+    erase(list, 0);
+    cout<<"Test erase, valor borrado de la pos 0."<<endl;
+    cout<<"Estado de la lista actual:"<<endl;
+    print_list(list);
+
+    erase(list, 98);
+    cout<<"Test erase, valor borrado de la pos 98."<<endl;
+    cout<<"Estado de la lista actual:"<<endl;
+    print_list(list);
+
 
    
     return 0;

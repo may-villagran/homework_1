@@ -1,9 +1,0 @@
-usar valgrind para compilar, 
-
-usar consexpre para 4:
-- hacer codigo con str para justificar
-
-
-ejrcicio 3:
-usar smart pointer share
-try y catgh para cada pedido de memeria 
