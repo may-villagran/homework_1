@@ -1,4 +1,4 @@
-#include "ejercicio2.h"
+#include "ejercicio2.hpp"
 
 string casteo_string(ETIQUETAS nivel_importancia) {
     switch (nivel_importancia) {

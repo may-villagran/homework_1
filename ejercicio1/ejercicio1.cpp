@@ -1,4 +1,4 @@
-#include "ejercicio1.h"
+#include "ejercicio1.hpp"
 
 int **asignacion_memoria(int n)
 {

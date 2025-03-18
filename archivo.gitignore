@@ -1,9 +1,9 @@
-# Ignorar todo por defecto
+# Ignorar todo por def
 *
 
-# Permitir archivos .h y .cpp en cualquier parte del repositorio
+# Permitir  .h y .cpp en cualquier parte del repositorio
 !**/*.h
 !**/*.cpp
 
-# Permitir que Git rastree las carpetas que contienen estos archivos
+# Permitir las carpetas con .h y .cpp
 !*/

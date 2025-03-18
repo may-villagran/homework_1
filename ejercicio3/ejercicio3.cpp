@@ -1,4 +1,4 @@
-#include "ejercicio3.h"
+#include "ejercicio3.hpp"
 
 
 shared_ptr<List_t> create_list(){
@@ -17,6 +17,8 @@ shared_ptr<List_t> create_list(){
 }
 
 shared_ptr<Node_t> prev_node(shared_ptr<List_t>list, int pos){
+    if(0<pos || pos>=static_cast<int>(list->size) ) return nullptr;
+    
     shared_ptr<Node_t> prev_node = list->head;
     if(pos == 1) return prev_node;
     
@@ -26,6 +28,7 @@ shared_ptr<Node_t> prev_node(shared_ptr<List_t>list, int pos){
 }
 
 void delete_tail(shared_ptr<List_t>list){
+    if(list->size == 0) return;
     if(list->size == 1) list->head = list->tail = nullptr;
 
     shared_ptr<Node_t> prev_tail = prev_node(list, list->size-1);
@@ -37,12 +40,12 @@ void delete_tail(shared_ptr<List_t>list){
 }
 
 void delete_head(shared_ptr<List_t>list){
+    if(list->size == 0) return;
     if(list->size == 1) list->head = list->tail = nullptr;
 
     list->head = list->head->next;
     list->size--;
 }
-
 
 shared_ptr<Node_t> create_nodo(int value){
     shared_ptr<Node_t> nodo_ptr = nullptr;  // Inicializamos el puntero a nullptr
@@ -96,9 +99,11 @@ bool push_back(shared_ptr<List_t>list, int value){
 
 bool insert(shared_ptr<List_t>list, int pos, int value){
     if(!list) return false;
-    
-    if(pos == 0) return push_front(list, value);
-    if(pos>static_cast<int>(list->size-1)) return push_back(list, value); 
+
+    //si la lista esta vacia por default agrego al principio
+    if(pos == 0 || list->size == 0) return push_front(list, value);
+    //defino que tambien para las posiciones negativas agrego al final de la lista
+    if(pos>=static_cast<int>(list->size) || pos<0) return push_back(list, value); 
     
     shared_ptr<Node_t> nuevo_nodo = create_nodo(value);
     if(!nuevo_nodo) return false;
@@ -115,11 +120,12 @@ bool insert(shared_ptr<List_t>list, int pos, int value){
 void erase(shared_ptr<List_t>list, int pos){
     if(!list) return;
 
-    if(pos ==0) {
+    if(pos==0) {
         delete_head(list); 
         return;
     }
-    if(pos>=static_cast<int>(list->size-1)){
+    //si paso posiciones fuera del rango elimino la tail, tanto para pos neg como mayores al tam
+    if(pos>=static_cast<int>(list->size) || pos<0){
         delete_tail(list); 
         return;
     }
