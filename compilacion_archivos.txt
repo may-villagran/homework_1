@@ -1,18 +1,18 @@
 Ejercicio 1:
 g++ -Wall -Wextra -Werror ejercicio1.cpp -o ejercicio1
-valgrind ./Ejercicio1
+valgrind ./ejercicio1
 
 
 Ejercicio 2:
 g++ -Wall -Wextra -Werror ejercicio2.cpp -o ejercicio2
-valgrind ./Ejercicio2
+valgrind ./ejercicio2
 
 
 Ejercicio 3:
 g++ -Wall -Wextra -Werror ejercicio3.cpp -o ejercicio3
-valgrind ./Ejercicio3
+valgrind ./ejercicio3
 
 
 Ejercicio 4:
 g++ -Wall -Wextra -Werror ejercicio4.cpp -o ejercicio4
-valgrind ./Ejercicio1
+valgrind ./ejercicio1

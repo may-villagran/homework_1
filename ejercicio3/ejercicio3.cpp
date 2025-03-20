@@ -17,7 +17,7 @@ shared_ptr<List_t> create_list(){
 }
 
 shared_ptr<Node_t> prev_node(shared_ptr<List_t>list, int pos){
-    if(0<pos || pos>=static_cast<int>(list->size) ) return nullptr;
+    if(pos<0 || pos>=static_cast<int>(list->size) ) return nullptr;
     
     shared_ptr<Node_t> prev_node = list->head;
     if(pos == 1) return prev_node;
@@ -29,7 +29,11 @@ shared_ptr<Node_t> prev_node(shared_ptr<List_t>list, int pos){
 
 void delete_tail(shared_ptr<List_t>list){
     if(list->size == 0) return;
-    if(list->size == 1) list->head = list->tail = nullptr;
+    if(list->size == 1) {
+        list->head = list->tail = nullptr;
+        list->size = 0;
+        return;    
+    }
 
     shared_ptr<Node_t> prev_tail = prev_node(list, list->size-1);
     list->tail = prev_tail;
@@ -119,6 +123,10 @@ bool insert(shared_ptr<List_t>list, int pos, int value){
 
 void erase(shared_ptr<List_t>list, int pos){
     if(!list) return;
+    if(list->size == 0){
+        cerr << "Advertencia: Intento de borrar de una lista vacía." << endl; //cer salida de consola de advertencia 
+        return;}
+
 
     if(pos==0) {
         delete_head(list); 
@@ -185,6 +193,24 @@ int main(){
     cout<<"Test erase, valor borrado de la pos 98."<<endl;
     cout<<"Estado de la lista actual:"<<endl;
     print_list(list);
+
+    erase(list, 98);
+    cout<<"Test erase, valor borrado de la pos 98."<<endl;
+    cout<<"Estado de la lista actual:"<<endl;
+    print_list(list);
+
+    erase(list, 787);
+    cout<<"Test erase, borrado de último elemento."<<endl;
+    cout<<"Estado de la lista actual:"<<endl;
+    print_list(list);
+
+    erase(list, 787);
+    cout<<"Test erase, borrado cuando no hay elementos."<<endl;
+    cout<<"Estado de la lista actual:"<<endl;
+    print_list(list);
+
+
+    
 
 
    
